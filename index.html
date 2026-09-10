@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimbrCalc - Unione dei Comuni Terre di Pianura</title>
+  
+  <!-- Font Titillium Web -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER CON OROLOGIO A SINISTRA, LOGO CENTRALE E CAMPI PRINCIPALI A DESTRA -->
+  <header class="header">
+    <div class="header-container">
+      
+      <!-- Orologio e Data in Alto a Sinistra -->
+      <div class="header-left">
+        <div class="clock-card">
+          <div id="live-date" class="clock-date">--/--/----</div>
+          <div id="live-time" class="clock-time">00:00:00</div>
+          <div class="clock-sync-tag">Sync with Time.is</div>
+        </div>
+      </div>
+
+      <!-- Logo Ufficiale e Titolo al Centro -->
+      <div class="header-center">
+        <img src="logo.png" alt="Unione dei Comuni Terre di Pianura" class="header-logo-img">
+        <h1 class="header-title">TIMBRCALC</h1>
+      </div>
+
+      <!-- 2 Campi Principali in Alto a Destra -->
+      <div class="header-right">
+        <div class="top-input-card">
+          <div class="input-row">
+            <label for="f2_entrata" class="main-label">Ingresso:</label>
+            <input type="time" id="f2_entrata" class="time-input" value="00:00" oninput="runCalculations()" onchange="runCalculations()">
+          </div>
+          <div class="input-row">
+            <label for="f4_uscita" class="main-label">Uscita Manuale:</label>
+            <input type="time" id="f4_uscita" class="time-input" value="00:00" oninput="runCalculations()" onchange="runCalculations()">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- CONTENUTO PRINCIPALE SU DUE COLONNE -->
+  <main class="main-container">
+
+    <!-- BLOCCO GIORNATA CORTA (A SINISTRA) -->
+    <section class="card card-corta">
+      <div class="card-header">
+        <h2>GIORNATA CORTA</h2>
+        <p class="card-sub">Lunedì - Mercoledì - Venerdì (6 Ore)</p>
+      </div>
+
+      <div class="card-body">
+        <!-- Uscita Prevista -->
+        <div class="field-row highlight-row">
+          <span class="field-label">Uscita Prevista:</span>
+          <span id="c8_uscita_prevista" class="field-value">00:00</span>
+        </div>
+
+        <!-- Flessibilità Positiva / Negativa -->
+        <div class="field-row">
+          <span class="field-label">Flessibilità Positiva / Negativa:</span>
+          <span id="c15_flessibilita" class="field-value">00:00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCCO GIORNATA LUNGA (A DESTRA) -->
+    <section class="card card-lunga">
+      <div class="card-header">
+        <h2>GIORNATA LUNGA</h2>
+        <p class="card-sub">Martedì - Giovedì (9 Ore)</p>
+      </div>
+
+      <div class="card-body">
+        <!-- Uscita Prevista -->
+        <div class="field-row highlight-row">
+          <span class="field-label">Uscita Prevista:</span>
+          <span id="f8_uscita_prevista" class="field-value">00:00</span>
+        </div>
+
+        <!-- Blocco Pausa + Ticket Pranzo con sfondo Arancione Leggero (255,182,108) -->
+        <div class="pausa-ticket-block">
+          <div class="input-row">
+            <label for="f10_pausa_out">Pausa OUT:</label>
+            <input type="time" id="f10_pausa_out" class="time-input" value="00:00" oninput="runCalculations()" onchange="runCalculations()">
+          </div>
+          <div class="input-row">
+            <label for="f11_pausa_in">Pausa IN:</label>
+            <input type="time" id="f11_pausa_in" class="time-input" value="00:00" oninput="runCalculations()" onchange="runCalculations()">
+          </div>
+          <div class="ticket-inline-row">
+            <span class="field-label">Ticket Pranzo:</span>
+            <span id="ticket_pranzo_status" class="ticket-badge ticket-default">SI / NO</span>
+          </div>
+        </div>
+
+        <!-- Flessibilità Positiva / Negativa -->
+        <div class="field-row">
+          <span class="field-label">Flessibilità Positiva / Negativa:</span>
+          <span id="f15_flessibilita" class="field-value">00:00</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CONTENITORE AZIONI IN BASSO A DESTRA (PORTALE DIPENDENTE + RESET) -->
+  <div class="action-buttons-container">
+    <a href="https://dgegovpa.it/UnioneTerreDiPianuraPP/mainprocs.aspx" target="_blank" rel="noopener noreferrer" class="portal-link">
+      🌐 Portale Dipendente
+    </a>
+    <button type="button" class="btn btn-reset" onclick="resetAll()">Reset</button>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 TimbrCalc Web App - Created by Alessandro Cuccia</p>
+  </footer>
+
+  <script src="formulas.js"></script>
+</body>
+</html>
