@@ -1,10 +1,10 @@
 /**
- * TimbrCalc - Formule, Reset e Orologio Sincronizzato
+ * TimbrCalc
  */
 
 let timeOffsetMs = 0;
 
-// Sincronizzazione con gestione errori per dispositivi mobile
+// Sincronizzazione con gestione errori Mobile
 async function syncTime() {
   try {
     const startMs = Date.now();
